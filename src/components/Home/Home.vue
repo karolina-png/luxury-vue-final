@@ -25,7 +25,7 @@
                 </figure>
                 <footer>
                   <p>
-                  <h3>{{ p.name }}</h3>
+                  <h5>{{ p.name }}</h5>
                   </p>
                   <p>Precio: {{ p.selling_price }}</p>
                 </footer>
@@ -131,7 +131,6 @@ a {
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.397);
   border-radius: 0.7rem;
-  padding: 1rem;
   width: 75%;
   /* position: absolute; */
 }
@@ -185,10 +184,11 @@ article {
 #redes {
   /* border:1px solid #ffffff; */
   justify-content: space-between;
-  width: 10em;
+  width: 11em;
   display: flex;
   flex-flow: row;
-
+margin-right: 1em;
+ 
 }
 
 #welcome {

@@ -3,7 +3,7 @@
         <div id="contcar">
             <input name="buscar articulo" type="text" id="buscar" v-model="search" @keyup="filtrar()"
                 placeholder="search">
-            <label id="buycar" for="car"><i class="bi bi-cart"></i></label>
+            <label id="buycar" for="car"><i class="bi bi-cart-plus"></i></label>
             <input type="checkbox" name="" id="car">
             <div class="carrito">
                 <carhead>
@@ -75,7 +75,7 @@
                         </figure>
                         <footer>
                             <p>
-                            <h3>{{a.name}}</h3>
+                            <h4>{{a.name}}</h4>
                             </p>
                             <p>Precio:{{a.selling_price}}</p>
                         </footer>

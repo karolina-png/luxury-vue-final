@@ -108,10 +108,12 @@
             <div id="cont_user_art">
 
                 <article v-for="p in users_list_mostrar" class="art_user">
+                   
 
                     <p>Nombre: {{p.name}}</p>
                     <p>Email: {{p.email}}</p>
                     <p>Rol: {{role[p.roles_id]}}</p>
+               
                     <footer>
                         <button type="button" class="boton text-black" data-bs-toggle="modal"
                             data-bs-target="#editmodal" @click="edit_user(p)">
@@ -143,6 +145,7 @@
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+  
 }
 
 #cont_user_art {
@@ -151,11 +154,13 @@
     justify-content: center;
     width: 100%;
     height: max-content;
+
 }
 
 .art_user {
-    width: 12rem !important;
-    height: 12rem;
+    width: max-content;
+    height: max-content;
+    
     padding: 0.5rem;
     background-color: rgba(0, 0, 0, 0.445);
     color: white;

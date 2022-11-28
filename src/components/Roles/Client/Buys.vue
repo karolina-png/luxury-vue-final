@@ -1,5 +1,5 @@
 <template>
-  <h1>My Buys:</h1>
+  <h1>Mis compras:</h1>
   <div id="client_buys">
     <div id="container_buys">
       <article id="sales">
