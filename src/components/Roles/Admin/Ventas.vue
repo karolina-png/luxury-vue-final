@@ -1,12 +1,12 @@
 <template>
    <div id="container-sales">
-     <h1>Ventas:</h1>
+     <h1>VENTAS:</h1>
      <div id="con_buton_sale">
        <button @click="filtrar(0)">En proceso</button>
        <button @click="filtrar(1)">Compra finalizada</button>
        <button @click="filtrar(2)">Producto enviado</button>
        <button @click="filtrar(3)">Producto entregado</button>
-       <button
+       <!-- <button
          type="button"
          class="btn btn-secondary text-black fs-5 em"
          data-bs-toggle="modal"
@@ -14,7 +14,7 @@
          data-bs-whatever="@mdo"
        >
          Config
-       </button>
+       </button> -->
      </div>
  
      <div id="sales">
@@ -34,7 +34,7 @@
      </div>
    </div>
  
-   <!-- Toast -->
+   <!-- Toast
    <div class="toast-container position-fixed bottom-0 p-3">
      <div
        class="toast text-bg-success border-0"
@@ -56,7 +56,7 @@
      </div>
    </div>
  
-   <!-- Button trigger modal -->
+   Button trigger modal
    <button
      type="button"
      class="btn btn-primary"
@@ -65,8 +65,8 @@
    >
      Launch demo modal
    </button>
- 
-   <!-- Modal -->
+  -->
+   <!-- Modal
    <div
      class="modal fade"
      id="editConfig"
@@ -131,7 +131,7 @@
        </div>
      </div>
    </div>
- 
+  -->
    
  </template>
  <style>
@@ -168,10 +168,10 @@
        sales_list: [],
        sales_list_show: [],
        search: 0,
-       config: {
-         iva_percent: 0,
-         shipping_price: 0,
-       },
+      //  config: {
+      //    iva_percent: 0,
+      //    shipping_price: 0,
+      //  },
        toast: null,
        alert: "",
        modal: null,
@@ -180,7 +180,7 @@
    },
    mounted() {
      this.get_sales();
-     this.get_iva();
+    //  this.get_iva();
    },
    methods: {
      //Manage bootstrap modals and toast
@@ -220,30 +220,30 @@
        this.filtrar(0);
      },
  
-     async update_iva() {
-       console.log(this.config);
+    //  async update_iva() {
+    //    console.log(this.config);
  
-       this.prepare_elements();
-       try {
-         let res = await this.axios.put("/api/config/1", this.config);
-         console.log(res.data)
-         this.alert = res.data.message;
-         this.get_iva();
-         this.modal.hide();
-         this.toast.show();
-       } catch (e) {
-         this.manage_error_messages(e);
-       }
-     },
+    //    this.prepare_elements();
+    //    try {
+    //      let res = await this.axios.put("/api/config/1", this.config);
+    //      console.log(res.data)
+    //      this.alert = res.data.message;
+    //      this.get_iva();
+    //      this.modal.hide();
+    //      this.toast.show();
+    //    } catch (e) {
+    //      this.manage_error_messages(e);
+    //    }
+    //  },
  
-     async get_iva() {
-       try {
-         let response = await this.axios.get("/api/config");
-         this.config = response.data.config;
-       } catch (e) {
-         this.manage_error_messages(e);
-       }
-     },
+    //  async get_iva() {
+    //    try {
+    //      let response = await this.axios.get("/api/config");
+    //      this.config = response.data.config;
+    //    } catch (e) {
+    //      this.manage_error_messages(e);
+    //    }
+    //  },
  
      filtrar(p) {
        this.search = p;

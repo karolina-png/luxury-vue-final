@@ -7,18 +7,23 @@
                         Sales
                     </router-link>
                     <router-link to="/Users" class="aside_art">
-                        Users
+                        <i class="bi bi-people-fill"></i>
                     </router-link>
                     <router-link to="/ArticlesAdmin" class="aside_art">
                         Articles
                     </router-link>
-
+                    
 
                 </div>
+
                 <div>
+                    <button type="button" class="btn btn-secondary text-black fs-5 em" data-bs-toggle="modal"
+                        data-bs-target="#editConfig" data-bs-whatever="@mdo">
+                        <i class="bi bi-gear-fill"></i>
+                    </button>
                     <button class="aside_art" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions"> ME </button>
-                    
+                        data-bs-target="#offcanvasWithBothOptions"><i class="bi bi-person-fill"></i></button>
+
                 </div>
 
             </aside>
@@ -31,23 +36,79 @@
         <div class="offcanvas offcanvas-start bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Luxury sex-shop</h5>
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">LUXURY SEX-SHOP</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
 
                 <div id="user_data">
-                    <h1> My Profile</h1>
-                    <h2>{{role[user.roles_id]}}</h2>
-                    <p>Name: {{user.name}}</p>
-                    <p>Email: {{user.email}}</p>
-                   
-                    <button @click="logout()">Logout</button>
+                    <h1> MY PERFIL</h1>
+                    <h2>{{ role[user.roles_id] }}</h2>
+                    <p>NOMBRE:  {{ user.name }}</p>
+                    <p>EMAIL:  {{ user.email }}</p>
+
+                    <button @click="logout()">CERRAR</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Toast -->
+    <div class="toast-container position-fixed bottom-0 p-3">
+        <div class="toast text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ alert }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editConfig">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editConfig" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">MODIFICAR IVA:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <label for="iva" class="col-sm-2 col-form-label">Iva (%):</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control-plaintext" id="iva" v-model="config.iva_percent" />
+                            <div class="form-text" v-if="errors.iva_percent">
+                                {{ errors.iva_percent[0] }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="shipping_price" class="col-sm-2 col-form-label">Domicilio:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control-plaintext" id="shipping_price"
+                                v-model="config.shipping_price" />
+                            <div class="form-text" v-if="errors.shipping_price">
+                                {{ errors.shipping_price[0] }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="text-black" @click="update_iva()">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -59,7 +120,14 @@ export default {
     data() {
         return {
             token: null,
-
+            config: {
+                iva_percent: 0,
+                shipping_price: 0,
+            },
+            toast: null,
+            alert: "",
+            modal: null,
+            errors: {},
             user: {},
             user_edit: {},
             role: ['ajam', ' Client', ' Employee', ' Administrator']
@@ -69,15 +137,15 @@ export default {
 
     mounted() {
         this.$router.push('ArticlesAdmin');
+        this.get_iva();
 
-       
 
         if (localStorage.token) {
             this.token = localStorage.token;
             this.user = JSON.parse(localStorage.user);
-            console.log("Admin rol: "+ this.user.roles_id);
+            console.log("Admin rol: " + this.user.roles_id);
             if (this.user.roles_id === 3) {
-                
+
                 this.token = localStorage.token;
                 this.user = JSON.parse(localStorage.user);
                 // this.token = localStorage.token;
@@ -133,7 +201,33 @@ export default {
             this.user_edit = p;
             // console.log(this.articles_edit);
         },
-        
+
+        async update_iva() {
+            console.log(this.config);
+
+            this.prepare_elements();
+            try {
+                let res = await this.axios.put("/api/config/1", this.config);
+                console.log(res.data)
+                this.alert = res.data.message;
+                this.get_iva();
+                this.modal.hide();
+                this.toast.show();
+            } catch (e) {
+                this.manage_error_messages(e);
+            }
+        },
+
+        async get_iva() {
+            try {
+                let response = await this.axios.get("/api/config");
+                this.config = response.data.config;
+            } catch (e) {
+                this.manage_error_messages(e);
+            }
+        },
+
+
     }
 };
 </script>
