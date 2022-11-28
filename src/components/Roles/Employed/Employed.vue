@@ -3,17 +3,17 @@
        <div class="offcanvas offcanvas-start bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Luxury sex-shop</h5>
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">LUXURY SEX-SHOP</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
 
             <div id="user_data">
-                <h1> Mi Perfil</h1>
-                <p>Name: {{user.name}}</p>
-                <p>Email: {{user.email}}</p>
-                <p>Created at: {{user.created_at}}</p>
-                <button @click="logout()">Logout</button>
+                <h1> MI PERFIL</h1>
+                <p>NOMBRE: {{user.name}}</p>
+                <p>EMAIL: {{user.email}}</p>
+                <p>CREADO: {{user.created_at}}</p>
+                <button @click="logout()"><i class="bi bi-box-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
             </div>
 
             <button class="emp" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions"> User </button>
+                data-bs-target="#offcanvasWithBothOptions"><i class="bi bi-person-fill"></i></button>
           
 
         </aside>

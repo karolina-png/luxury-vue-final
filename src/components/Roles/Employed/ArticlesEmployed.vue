@@ -3,7 +3,7 @@
     <div id="search">
       <div id="container-search">
         <button type="button" class="btn btn-secondary text-black fs-5 em" data-bs-toggle="modal"
-          data-bs-target="#exampleModal" data-bs-whatever="@mdo">New</button>
+          data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-plus-circle"></i></button>
         <input name="buscar articulo" class="em" type="text" id="buscar" v-model="search" @keyup="filtrar()"
           placeholder="Search">
       </div>
@@ -39,9 +39,9 @@
 
               <button type="button" class=" text-black" data-bs-toggle="modal" data-bs-target="#editmodal"
                 @click="edit_article(p)">
-                Edit
+                <i class="bi bi-pencil-square"></i>
               </button>
-              <button @click="borrar(p.id)">Delete</button>
+              <button @click="borrar(p.id)"><i class="bi bi-trash3-fill"></i></button>
             </footer>
           </div>
         </article>
@@ -53,41 +53,41 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-3 text-black" id="exampleModalLabel">Create Atticle</h1>
+            <h1 class="modal-title fs-3 text-black" id="exampleModalLabel">CREAR ARTICULO</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body formnew">
             <form id="formnew">
               <div class="mb-2">
-                <label for="image" class="col-form-label text-black">Imagen: </label>
+                <label for="image" class="col-form-label text-black">IMAGEN: </label>
                 <input type="text" class="form-control" id="image" v-model="articles.image">
               </div>
               <div class="mb-2">
-                <label for="message-text" class="col-form-label text-black">Name:</label>
+                <label for="message-text" class="col-form-label text-black">NOMBRE:</label>
                 <input type="text" class="form-control" id="recipient-name" v-model="articles.name">
               </div>
               <div class="mb-2">
-                <label for="categori" class="col-form-label text-black">Categori: </label>
+                <label for="categori" class="col-form-label text-black">CATEGORIA: </label>
                 <input type="text" class="form-control" id="categori" v-model="articles.categories_id">
               </div>
               <div class="mb-2">
-                <label for="code" class="col-form-label text-black">Code:</label>
+                <label for="code" class="col-form-label text-black">CODIGO:</label>
                 <input type="text" class="form-control" id="code" v-model="articles.code">
               </div>
               <div class="mb-2">
-                <label for="price" class="col-form-label text-black">Price: </label>
+                <label for="price" class="col-form-label text-black">PRICE: </label>
                 <input type="text" class="form-control" id="price" v-model="articles.selling_price">
               </div>
               <div class="mb-2">
-                <label for="stock" class="col-form-label text-black">Stock:</label>
+                <label for="stock" class="col-form-label text-black">STOCK:</label>
                 <input type="text" class="form-control" id="stock" v-model="articles.stock">
               </div>
               <div class="mb-2">
-                <label for="description" class="col-form-label text-black">Description: </label>
+                <label for="description" class="col-form-label text-black">DESCRIPCION: </label>
                 <input type="text" class="form-control" id="description" v-model="articles.description">
               </div>
               <div class="mb-2">
-                <label for="active" class="col-form-label text-black">Active:</label>
+                <label for="active" class="col-form-label text-black">ACTIVA:</label>
                 <input type="text" class="form-control" id="active" v-model="articles.active">
               </div>
 
@@ -96,8 +96,8 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="text-black " data-bs-dismiss="modal">Close</button>
-            <button type="button" class="text-black " data-bs-dismiss="modal" @click="new_article()">Create</button>
+            <button type="button" class="text-black " data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
+            <button type="button" class="text-black " data-bs-dismiss="modal" @click="new_article()"><i class="bi bi-plus-circle"></i></button>
           </div>
         </div>
       </div>
