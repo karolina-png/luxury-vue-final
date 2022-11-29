@@ -183,12 +183,19 @@
                 <label for="categori" class="col-form-label text-black"
                   >Categoria:
                 </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="categori"
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
                   v-model="articles.categories_id"
-                />
+                >
+                  <option
+                    v-for="item in categories"
+                    :key="'categories' + item.id"
+                    :value="item.id"
+                  >
+                    {{ item.name }}
+                  </option>
+                </select>
               </div>
               <div class="mb-2">
                 <label for="code" class="col-form-label text-black"
@@ -235,15 +242,18 @@
                 />
               </div>
               <div class="mb-2">
-                <label for="active" class="col-form-label text-black"
-                  >Activo:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="active"
-                  v-model="articles.active"
-                />
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    v-model="articles.active"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckChecked"
+                    >The Article is active</label
+                  >
+                </div>
               </div>
             </form>
           </div>
@@ -382,12 +392,18 @@
                 <label for="active" class="col-form-label text-black"
                   >Active:</label
                 >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="active"
-                  v-model="articles_edit.active"
-                />
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    v-model="articles_edit.active"
+                  />
+                  <label class="form-check-label" for="flexSwitchCheckChecked"
+                    >Checked switch checkbox input</label
+                  >
+                </div>
               </div>
             </form>
           </div>
@@ -417,6 +433,15 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+}
+
+.form-switch {
+  margin-left: 5px;
+}
+
+.form-select {
+  padding: 3px !important;
+  margin-left: 7px;
 }
 
 #articles {
@@ -519,6 +544,7 @@ input {
 export default {
   data() {
     return {
+      categories: [],
       articles_list: [],
       articles_list_mostrar: [],
       search: "",
@@ -531,7 +557,7 @@ export default {
         selling_price: "",
         stock: "",
         description: "",
-        active: "",
+        active: true,
         url: null,
         preview: null,
         updated: null, //backend action
@@ -551,6 +577,7 @@ export default {
   },
   mounted() {
     this.get_products();
+    this.get_categories();
 
     // this.new_article();
   },
@@ -580,6 +607,11 @@ export default {
       }
     },
 
+    async get_categories() {
+      let response = await this.axios.get("/api/categories");
+      this.categories = response.data;
+    },
+
     async get_products() {
       let response = await this.axios.get("/api/articles");
       this.articles_list = response.data;
@@ -587,20 +619,13 @@ export default {
     },
 
     async new_article() {
-      let formData = new FormData();
-      formData.append("image", this.articles.image);
-      formData.append("name", this.articles.name);
-      formData.append("categories_id", this.articles.categories_id);
-      formData.append("code", this.articles.code);
-      formData.append("selling_price", this.articles.selling_price);
-      formData.append("stock", this.articles.stock);
-      formData.append("description", this.articles.description);
-      formData.append("active", this.articles.active);
-
-      // console.log("FORMDATA: "+formData);
-
       let response = await this.axios
-        .post("/api/articles/", formData)
+        .post("/api/articles/", this.articles, {
+          headers: {
+            // Authorization: "Bearer " + localStorage.token,
+            "Content-Type": "multipart/form-data", //Permite enviar imágenes
+          },
+        })
         .then((response) => {
           console.log("Ehh:" + response.data);
         });

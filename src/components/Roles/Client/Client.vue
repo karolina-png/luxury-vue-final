@@ -1,5 +1,5 @@
 <template>
-
+xxxxxxxxx
     <div class="offcanvas offcanvas-start bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
@@ -37,8 +37,8 @@
         <div id="container_client">
             <div id="client">
                 <router-view> </router-view>
-                <!-- <div class="cont-art">
-            <article v-for="p in articles_list_mostrar">
+                <div class="cont-art">
+            <article v-for="p in articles_list_mostrar" :key="'articles_list' + p.id">
                 <p>{{p.name}}</p>
                 <p>{{p.code}}</p>
                 <p>{{p.stock}}</p>
@@ -46,7 +46,7 @@
                 <p>{{p.description}}</p>
                 <p>{{p.selling_price}}</p>
             </article>
-           </div> -->
+           </div>
             </div>
             <div id="bar">
                 <div>
@@ -217,10 +217,9 @@
             };
         },
         mounted() {
-            this.$router.push("Clientarticles");
+            this.$router.push({name: "Clientarticles"});
             // this.get_products();
 
-            console.log("Client rol: " + this.roles_id);
             if (localStorage.token) {
                 this.token = localStorage.token;
                 this.user = JSON.parse(localStorage.user);

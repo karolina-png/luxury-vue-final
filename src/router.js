@@ -43,18 +43,12 @@ const routes= [
 {
     path:"/Client",
     name:"Client",
-    component:Client,
+    component:Clientarticles,
     children:[
         {
             path:"/Buys",
             name:"Buys",
             component:Buys,
-        },
-        {
-            
-            path:"/Clientarticles",
-            name:"Clientarticles",
-            component:Clientarticles,
         }
     ] 
 },
