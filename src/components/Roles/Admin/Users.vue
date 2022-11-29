@@ -97,7 +97,7 @@
         <div id="search">
             <div id="container-search">
                 <button type="button" class="btn btn-secondary text-black fs-5 em" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-person-plus"></i></button>
+                    data-bs-target="#exampleModal" data-bs-whatever="@mdo">New</button>
                 <input name="buscar articulo" class="em" type="text" id="buscar" v-model="search" @keyup="filtrar()"
                     placeholder="Search">
             </div>
