@@ -104,11 +104,11 @@
   text-align: center;
 }
 
-#price {
-  color: #000 !important;
+/*#price {
+ 
   font-size: 1rem !important;
   
-}
+}*/
 
 #container_clinarts {
   display: flex;
@@ -229,6 +229,7 @@ carfooter div:active {
   /* background-color: blueviolet; */
   width: 30%;
 }
+
 
 #price {
   display: flex;

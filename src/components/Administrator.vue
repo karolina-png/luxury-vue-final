@@ -5,11 +5,8 @@
         <div>
           <router-link to="/Ventas" class="aside_art"> Sales </router-link>
           <router-link to="/Users" class="aside_art">
-            <i class="bi bi-people-fill"></i>
-          </router-link>
-          <router-link to="/ArticlesAdmin" class="aside_art">
-            Articles
-          </router-link>
+            <i class="bi bi-people-fill"></i></router-link>
+          <router-link to="/ArticlesAdmin" class="aside_art">Articles</router-link>
         </div>
 
         <div>
@@ -28,7 +25,11 @@
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions"
           >
+
+          <div id="pe">
             <i class="bi bi-person-fill"></i>
+          </div>
+           
           </button>
         </div>
       </aside>
@@ -61,7 +62,7 @@
           <p>NOMBRE: {{ user.name }}</p>
           <p>EMAIL: {{ user.email }}</p>
 
-          <button @click="logout()">CERRAR</button>
+          <button @click="logout()"><i class="bi bi-box-arrow-right"></i></button>
         </div>
       </div>
     </div>
@@ -163,6 +164,10 @@
 
 <style scoped>
 @import url(../assets/administrator.css);
+
+#pe{
+ padding: 1.2rem;
+}
 </style>
 
 <script>

@@ -51,7 +51,7 @@
         <div class="modal-dialog">
             <div class="modal-content new_user-modal">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-3 text-black" id="exampleModalLabel">Edit user</h1>
+                    <h1 class="modal-title fs-3 text-black" id="exampleModalLabel">Editar Usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body formnew">
@@ -82,9 +82,9 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="text-black " data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="text-black " data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
                     <button type="button" class="text-black " data-bs-dismiss="modal"
-                        @click="update_user()">Edit</button>
+                        @click="update_user()"><i class="bi bi-arrow-clockwise"></i></button>
                 </div>
             </div>
         </div>
@@ -97,8 +97,8 @@
         <div id="search">
             <div id="container-search">
                 <button type="button" class="btn btn-secondary text-black fs-5 em" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" data-bs-whatever="@mdo">New</button>
-                <input name="buscar articulo" class="em" type="text" id="buscar" v-model="search" @keyup="filtrar()"
+                    data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-plus-circle"></i></button>
+                <input name="buscar articulo" class="em" type="text" id="buscar" v-model="search" @keyup="filtrar()" 
                     placeholder="Search">
             </div>
 
@@ -116,10 +116,10 @@
                
                     <footer>
                         <button type="button" class="boton text-black" data-bs-toggle="modal"
-                            data-bs-target="#editmodal" @click="edit_user(p)">
-                            Edit
+                            data-bs-target="#editmodal" @click="edit_user(p)"><i class="bi bi-pencil-square"></i>
+                           
                         </button>
-                        <button @click="borrar_user(p.id)" class="boton">Delete</button>
+                        <button @click="borrar_user(p.id)" class="boton"><i class="bi bi-trash3-fill"></i></button>
                     </footer>
 
                 </article>
