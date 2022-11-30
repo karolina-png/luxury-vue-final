@@ -3,7 +3,7 @@
 
         <div id="container_login">
             <form id="login">
-                <h1 id="title" style="text-align: center;"> INICIAR SESION </h1>
+                <h1 id="title" style="text-align: center"> INICIAR SESION </h1>
                 <div class="input-field login">
                     <label>
                         Email:
