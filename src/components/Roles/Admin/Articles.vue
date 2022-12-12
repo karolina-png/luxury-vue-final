@@ -613,6 +613,7 @@ export default {
     },
 
     async get_products() {
+      
       let response = await this.axios.get("/api/articles");
       this.articles_list = response.data;
       this.articles_list_mostrar = this.articles_list;
