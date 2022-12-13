@@ -1,5 +1,5 @@
 <template>
-xxxxxxxxx
+
     <div class="offcanvas offcanvas-start bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
@@ -9,7 +9,7 @@ xxxxxxxxx
         <div class="offcanvas-body">
 
             <div id="user_data">
-                <h3>MI PERFIL</h3>
+                <h1>MI PERFIL</h1>
                 <p>NOMBRE: {{user.name}}</p>
                 <p>EMAIL: {{user.email}}</p>
                 <p>CREADO: {{user.created_at}}</p>
