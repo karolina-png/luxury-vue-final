@@ -23,7 +23,7 @@
                 </figure>
                 <footer>
                   <p>
-                  <h3>{{ p.name }}</h3>
+                {{ p.name }}
                   </p>
                   <p>Precio: {{ p.selling_price }}</p>
                 </footer>

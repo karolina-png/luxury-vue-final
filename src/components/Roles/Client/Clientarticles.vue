@@ -80,8 +80,11 @@
         >
           <div class="face front">
             <figure>
-              <img :src="a.image" />
+              <img v-if="a.image != null" :src="axios.defaults.baseURL + a.image" alt="" />
+              <img v-if="a.image == null" src="public/uploads/default.jpg" alt="" />
+              
             </figure>
+
             <footer>
               <p>
                 {{ a.name }}

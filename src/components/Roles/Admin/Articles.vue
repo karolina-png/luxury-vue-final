@@ -32,9 +32,15 @@
         >
           <div class="face front">
             <figure>
-              <img v-if="p.image != null" :src="axios.defaults.baseURL + p.image" alt="" />
-              <img v-if="p.image == null" src="public/uploads/default.jpg" alt="" />
-              {{ p.image }}
+              <img
+                v-if="p.image != null"
+                :src="axios.defaults.baseURL + p.image"
+                alt=""
+              />
+              <div>
+                <img v-if="p.image == null" src="../../../../public/uploads/default.jpg" alt="">
+              </div>
+              />
             </figure>
 
             <p>Nombre: {{ p.name }}</p>
@@ -305,7 +311,7 @@
                   type="file"
                   class="form-control"
                   id="image"
-                  @change="get_image"
+                  @change="show_image"
                 />
               </div>
               <figure>
@@ -657,7 +663,7 @@ export default {
       this.loading = false;
     },
 
-    async update() {
+    async update_article() {
       // this.articles_edit.image="image";
       // console.log("Image: "+this.articles_edit.image)
       let formData_edit = new FormData();
@@ -674,7 +680,12 @@ export default {
       let id = this.articles_edit.id;
       console.log("Id: " + id);
       await this.axios
-        .put("/api/articles/" + id, formData_edit)
+        .post("/api/articles/update/" + id, formData_edit, {
+          headers: {
+            Authorization: "Bearer " + localStorage.token,
+            "Content-Type": "multipart/form-data", //Permite enviar imágenes
+          },
+        })
         .then((response) => {
           console.log("ehh:" + response);
         });

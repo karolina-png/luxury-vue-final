@@ -7,9 +7,9 @@
         <input name="buscar articulo" class="em" type="text" id="buscar" v-model="search" @keyup="filtrar()"
           placeholder="Search">
       </div>
-
-
     </div>
+
+
     <div id="articles">
       <div id="sect_art">
         <article v-for="p in articles_list_mostrar" class="articles" :key="'article' + p.id">
@@ -97,7 +97,8 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="text-black " data-bs-dismiss="modal"><i class="bi bi-x"></i></button>
-            <button type="button" class="text-black " data-bs-dismiss="modal" @click="new_article()"><i class="bi bi-plus-circle"></i></button>
+            <button type="button" class="text-black " data-bs-dismiss="modal" @click="new_article()"><i
+                class="bi bi-plus-circle"></i></button>
           </div>
         </div>
       </div>
@@ -163,205 +164,203 @@
 </template>
 
 <style>
-/* @import url("../assets/administerarticles.css"); */
+  /* @import url("../assets/administerarticles.css"); */
 
-#container-articles {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-
-
-}
-
-#articles {
-  height: calc(100% - 5rem);
-  width: 100%;
-  overflow-y: scroll !important;
-  overflow-x: hidden !important;
-
-}
-
-#sect_art {
-  display: flex;
-  flex-wrap: wrap;
-  height: max-content;
-  justify-content: center;
-  background-color: rgba(19, 17, 20, 0.438);
-  border-radius: 1rem;
-  margin: 2rem;
-  padding: 2rem;
-
-}
-
-.articles {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 20rem;
-  height: 20rem;
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  /* border: 1px solid rgb(92, 0, 128); */
-  color: white;
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-#search {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 5rem;
-  width: 100%;
-  padding: 0.5rem;
-  /* border: 1px solid red; */
-}
-
-#container-search {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  /* border: 1px solid red; */
-}
-
-#buscar {
-  width: 10rem;
-  height: 2.2rem !important;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid;
-  color: white;
-  backdrop-filter: blur(5px);
-
-}
-
-#buscar:focus-visible {
-  background-color: rgba(55, 9, 82, 0.479);
-  width: 20rem;
-  height: 20rem;
+  #container-articles {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 
 
-}
-
-#buscar::placeholder {
-  color: white;
-}
-
-input {
-  margin: 0.5rem;
-}
-
-.formnew {
-  height: 40rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-#formnew {
-  display: flex;
-  flex-direction: column;
-  height: max-content;
-}
-
-@media (max-width: 400px) {
-  .em {
-    display: block;
   }
 
+  #articles {
+    height: calc(100% - 5rem);
+    width: 100%;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+
+  }
+
+  #sect_art {
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    justify-content: center;
+    background-color: rgba(19, 17, 20, 0.438);
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 2rem;
+
+  }
+
+  .articles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    /* border: 1px solid rgb(92, 0, 128); */
+    color: white;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 5rem;
+    width: 100%;
+    padding: 0.5rem;
+    /* border: 1px solid red; */
+  }
+
+  #container-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+  }
+
+  #buscar {
+    width: 10rem;
+    height: 2.2rem !important;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid;
+    color: white;
+    backdrop-filter: blur(5px);
+
+  }
+
+  #buscar:focus-visible {
+    background-color: rgba(55, 9, 82, 0.479);
+    width: 20rem;
+    height: 20rem;
+
+
+  }
+
+  #buscar::placeholder {
+    color: white;
+  }
+
+  input {
+    margin: 0.5rem;
+  }
+
+  .formnew {
+    height: 40rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  #formnew {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+  }
+
+  @media (max-width: 400px) {
+    .em {
+      display: block;
+    }
 
 
 
-}
+
+  }
 </style>
 
 <script>
-export default {
-  data() {
-    return {
-      articles_list: [],
-      articles_list_mostrar: [],
-      search: "",
-      articles: {
-        image: "",
-        name: "",
-        categories_id: "",
-        code: "",
-        selling_price: "",
-        stock: "",
-        description: "",
-        active: "",
+  export default {
+    data() {
+      return {
+        articles_list: [],
+        articles_list_mostrar: [],
+        search: "",
+        articles: {
+          image: "",
+          name: "",
+          categories_id: "",
+          code: "",
+          selling_price: "",
+          stock: "",
+          description: "",
+          active: "",
+
+        },
+        articles_edit: {},
+
+      };
+    },
+    mounted() {
+      this.get_products();
+
+
+      // this.new_article();
+    },
+
+    methods: {
+      async get_products() {
+        let response = await this.axios.get("/api/articles");
+        this.articles_list = response.data;
+        this.articles_list_mostrar = this.articles_list;
+      },
+
+      async new_article() {
+
+        console.log(this.articles);
+        let response = await this.axios.post("/api/articles/", this.articles);
+        this.get_products();
+        this.articles = "";
+
 
       },
-      articles_edit: {},
+      edit_article(p) {
+        this.articles_edit = p;
+        // console.log(this.articles_edit);
+      },
+      async update() {
+        let id = this.articles_edit.id;
+        console.log(this.articles_edit);
+        console.log("Id: " + id);
 
-    };
-  },
-  mounted() {
-    this.get_products();
+        await this.axios.put("/api/articles/" + id, this.articles_edit);
+        this.get_products()
+        this.articles_edit = "";
+      },
 
 
-    // this.new_article();
-  },
+      async borrar(id) {
+        console.log(id);
+        if (confirm('seguro de eliminar producto')) {
+          await this.axios.delete('/api/articles/' + id);
+          // console.log('se borro(?)');
+          this.get_products();
+        }
+      },
 
-  methods: {
-    async get_products() {
-      let response = await this.axios.get("/api/articles");
-      this.articles_list = response.data;
-      this.articles_list_mostrar = this.articles_list;
+      filtrar() {
+        this.articles_list_mostrar = this.articles_list.filter(
+          (p) =>
+            (p.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
+            (p.code.toString().toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
+            (p.description.toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
+            (p.selling_price.toString().toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
+            (p.stock.toString().toLowerCase().toString().indexOf(this.search.toLowerCase()) > -1) ||
+            (p.categories_id.toString().toLowerCase().toString().indexOf(this.search.toLowerCase()) > -1)
+
+        );
+      },
     },
-
-    async new_article() {
-
-      console.log(this.articles);
-      let response = await this.axios.post("/api/articles/", this.articles);
-      this.get_products();
-      this.articles = "";
-
-
-    },
-    edit_article(p) {
-      this.articles_edit = p;
-      // console.log(this.articles_edit);
-    },
-    async update() {
-      let id = this.articles_edit.id;
-      console.log(this.articles_edit);
-      console.log("Id: " + id);
-
-      await this.axios.put("/api/articles/" + id, this.articles_edit);
-      this.get_products()
-      this.articles_edit = "";
-    },
-
-
-    async borrar(id) {
-      console.log(id);
-      if (confirm('seguro de eliminar producto')) {
-        await this.axios.delete('/api/articles/' + id);
-        // console.log('se borro(?)');
-        this.get_products();
-      }
-    },
-
-    filtrar() {
-      this.articles_list_mostrar = this.articles_list.filter(
-        (p) =>
-          (p.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
-          (p.code.toString().toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
-          (p.description.toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
-          (p.selling_price.toString().toLowerCase().indexOf(this.search.toLowerCase()) > -1) ||
-          (p.stock.toString().toLowerCase().toString().indexOf(this.search.toLowerCase()) > -1) ||
-          (p.categories_id.toString().toLowerCase().toString().indexOf(this.search.toLowerCase()) > -1)
-
-      );
-    },
-  },
-};
+  };
 </script>
-
-    

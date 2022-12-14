@@ -7,8 +7,10 @@
             <article v-for="p in articles_list_show" class="articles">
               <div class="face front">
                 <figure>
-                  <img :src="p.image" alt="">
-                </figure>
+                    <img v-if="p.image != null" :src="axios.defaults.baseURL + p.image" alt="" />
+                    <img v-if="p.image == null" src="public/uploads/default.jpg" alt="" />
+                  
+                  </figure>
                 <footer>
                   <p>
                   <h4>{{ p.name }}</h4>
