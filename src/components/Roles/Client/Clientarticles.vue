@@ -97,6 +97,27 @@
       </div>
     </div>
   </div>
+  <div id="bar">
+    <div>
+      <router-link to="/Buys" class="btn buton"
+        ><i class="bi bi-cart-check-fill"></i>
+        Mis compras
+      </router-link>
+      <router-link to="/Clientarticles" class="btn buton"
+        ><i class="bi bi-cart4"></i>
+        Artículos
+      </router-link>
+      <button
+        class="btn buton"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions"
+      >
+        <i class="bi bi-person-circle"></i>
+        Usuario
+      </button>
+    </div>
+  </div>
 </template>
 
 <style>
@@ -229,7 +250,19 @@ carfooter div:active {
   /* background-color: blueviolet; */
   width: 30%;
 }
-
+#bar {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  width: 100%;
+  background-color: rgb(102, 27, 187);
+  
+  padding: 0.5rem;
+}
 
 #price {
   display: flex;
@@ -456,7 +489,6 @@ export default {
       }
     },
     async get_products() {
-        
       let response = await this.axios.get("/api/articles");
       this.articles_list = response.data;
       this.articles_list_mostrar = this.articles_list;

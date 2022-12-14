@@ -32,7 +32,9 @@
         >
           <div class="face front">
             <figure>
-              <img :src="p.image" alt="" />
+              <img v-if="p.image != null" :src="axios.defaults.baseURL + p.image" alt="" />
+              <img v-if="p.image == null" src="public/uploads/default.jpg" alt="" />
+              {{ p.image }}
             </figure>
 
             <p>Nombre: {{ p.name }}</p>
@@ -613,7 +615,6 @@ export default {
     },
 
     async get_products() {
-      
       let response = await this.axios.get("/api/articles");
       this.articles_list = response.data;
       this.articles_list_mostrar = this.articles_list;
