@@ -1,4 +1,83 @@
 <template>
+  <!-- user profile -->
+  <div
+    class="offcanvas offcanvas-start bg-dark"
+    data-bs-scroll="true"
+    tabindex="-1"
+    id="offcanvasWithBothOptions"
+    aria-labelledby="offcanvasWithBothOptionsLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+        LUXURY SEX-SHOP
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="user_data">
+        <h1>MI PERFIL</h1>
+        <p>NOMBRE: {{ user.name }}</p>
+        <p>EMAIL: {{ user.email }}</p>
+        <p>CREADO: {{ user.created_at }}</p>
+        <button @click="logout()"><i class="bi bi-box-arrow-right"></i></button>
+      </div>
+    </div>
+    <div
+      class="offcanvas offcanvas-start bg-dark"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          Luxury sex-shop
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <div id="user_data">
+          <h3>Mi Perfil</h3>
+          <p>Nombre: {{ user.name }}</p>
+          <p>Email: {{ user.email }}</p>
+          <p>Created at: {{ user.created_at }}</p>
+          <button @click="logout()">CerrarSesión</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="container_client">
+      <div id="client">
+        <router-view> </router-view>
+        <div class="cont-art">
+          <article
+            v-for="p in articles_list_mostrar"
+            :key="'articles_list' + p.id"
+          >
+            <p>{{ p.name }}</p>
+            <p>{{ p.code }}</p>
+            <p>{{ p.stock }}</p>
+
+            <p>{{ p.description }}</p>
+            <p>{{ p.selling_price }}</p>
+          </article>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- user profile -->
+
   <div id="container_clinarts">
     <div id="contcar">
       <input
@@ -80,9 +159,16 @@
         >
           <div class="face front">
             <figure>
-              <img v-if="a.image != null" :src="axios.defaults.baseURL + a.image" alt="" />
-              <img v-if="a.image == null" src="public/uploads/default.jpg" alt="" />
-              
+              <img
+                v-if="a.image != null"
+                :src="axios.defaults.baseURL + a.image"
+                alt=""
+              />
+              <img
+                v-if="a.image == null"
+                src="public/uploads/default.jpg"
+                alt=""
+              />
             </figure>
 
             <footer>
@@ -102,11 +188,11 @@
   </div>
   <div id="bar">
     <div>
-      <router-link to="/Buys" class="btn buton"
+      <router-link to="Client" class="btn buton"
         ><i class="bi bi-cart-check-fill"></i>
         Mis compras
       </router-link>
-      <router-link to="/Clientarticles" class="btn buton"
+      <router-link to="Client" class="btn buton"
         ><i class="bi bi-cart4"></i>
         Artículos
       </router-link>
@@ -263,7 +349,7 @@ carfooter div:active {
   height: 3.5rem;
   width: 100%;
   background-color: rgb(102, 27, 187);
-  
+
   padding: 0.5rem;
 }
 
@@ -441,6 +527,7 @@ export default {
   data() {
     return {
       user: {},
+      token: "",
       articles_list: [],
       articles_list_mostrar: [],
       search: "",
@@ -459,6 +546,7 @@ export default {
   mounted() {
     if (localStorage.user) {
       this.user = JSON.parse(localStorage.user);
+      this.token =  localStorage.token;
     } else {
       //Se va para el login
     }

@@ -38,10 +38,9 @@
                 alt=""
               />  
                 <img v-if="p.image == null" src="public/uploads/default.jpg" alt="">
-              />
             </figure>
 
-            <p>Nombre: {{ p.name }}</p>
+            <h3>Nombre: {{ p.name }}</h3>
             <p>Precio: {{ p.selling_price }}</p>
           </div>
 

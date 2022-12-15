@@ -6,9 +6,6 @@
     id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel"
   >
-
- 
-
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
         LUXURY SEX-SHOP
@@ -47,6 +44,7 @@
           aria-label="Close"
         ></button>
       </div>
+
       <div class="offcanvas-body">
         <div id="user_data">
           <h3>Mi Perfil</h3>
@@ -57,7 +55,8 @@
         </div>
       </div>
     </div>
-    <div id="container_client">
+
+    <!-- <div id="container_client">
       <div id="client">
         <router-view> </router-view>
         <div class="cont-art">
@@ -74,8 +73,7 @@
           </article>
         </div>
       </div>
-    </div>
-    
+    </div> -->
   </div>
 </template>
 
@@ -180,8 +178,6 @@ h5 {
   height: 2.5rem;
   margin-left: 1rem;
 }
-
-
 
 #buscar {
   width: 10rem !important;

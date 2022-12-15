@@ -9,7 +9,7 @@
               cc
               <footer>
                 
-                <h5>{{ p.name }}</h5>
+                <p>{{ p.name }}</p>
                
                 <p>Precio: {{ p.selling_price }}</p>
               </footer>

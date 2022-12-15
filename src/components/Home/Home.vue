@@ -26,9 +26,9 @@
                 </figure>
                 
                 <footer>
-                  <p>
-                  <h3>{{ p.name }}</h3>
-                  </p>
+                 
+                  <p>{{ p.name }}</p>
+                  
                   <p>Precio: {{ p.selling_price }}</p>
                 </footer>
 

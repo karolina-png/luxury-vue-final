@@ -49,7 +49,8 @@ const routes= [
             path:"/Buys",
             name:"Buys",
             component:Buys,
-        }
+        },
+                
     ] 
 },
 {
