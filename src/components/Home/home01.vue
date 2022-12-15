@@ -6,7 +6,11 @@
         <div id="contart">
           <article v-for="p in articles_list_show" class="articles">
             <div class="face front">
-              cc
+              <figure>
+                    <img v-if="p.image != null" :src="axios.defaults.baseURL + p.image" alt="" />
+                    <img v-if="p.image == null" src="public/uploads/default.jpg" alt="" />
+                  
+                  </figure>
               <footer>
                 
                 <p>{{ p.name }}</p>
