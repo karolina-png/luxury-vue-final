@@ -90,76 +90,12 @@
   </div>
 
   <!-- Button trigger modal -->
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#editConfig"
-  >
-    Launch demo modal
-  </button>
 
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="editConfig"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">MODIFICAR IVA:</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3 row">
-            <label for="iva" class="col-sm-2 col-form-label">Iva (%):</label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control-plaintext"
-                id="iva"
-                v-model="config.iva_percent"
-              />
-              <div class="form-text" v-if="errors.iva_percent">
-                {{ errors.iva_percent[0] }}
-              </div>
-            </div>
-          </div>
 
-          <div class="mb-3 row">
-            <label for="shipping_price" class="col-sm-2 col-form-label"
-              >Domicilio:</label
-            >
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control-plaintext"
-                id="shipping_price"
-                v-model="config.shipping_price"
-              />
-              <div class="form-text" v-if="errors.shipping_price">
-                {{ errors.shipping_price[0] }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="text-black" @click="update_iva()">
-            <i class="bi bi-arrow-clockwise"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
+      
+   
+  
 </template>
 
 <style scoped>
