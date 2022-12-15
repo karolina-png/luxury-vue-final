@@ -16,13 +16,21 @@
 
           <div class="face front">
             <figure>
-              <img :src="p.image" alt="">
+              <img
+                v-if="p.image != null"
+                :src="axios.defaults.baseURL + p.image"
+                alt=""
+              />
+             
+                <img v-if="p.image == null" src="public/uploads/default.jpg" alt="">
+             
+              />
             </figure>
 
-            <p>
+            
 
             <h4>Nombre: {{ p.name }}</h4>
-            </p>
+           
             <p>Precio: {{ p.selling_price }}</p>
           </div>
 

@@ -12,9 +12,9 @@
               
               </figure>
               <footer>
-                <p>
+                
                 <h5>{{ p.name }}</h5>
-                </p>
+               
                 <p>Precio: {{ p.selling_price }}</p>
               </footer>
 

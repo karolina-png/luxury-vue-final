@@ -36,10 +36,8 @@
                 v-if="p.image != null"
                 :src="axios.defaults.baseURL + p.image"
                 alt=""
-              />
-              <div>
-                <img v-if="p.image == null" src="../../../../public/uploads/default.jpg" alt="">
-              </div>
+              />  
+                <img v-if="p.image == null" src="public/uploads/default.jpg" alt="">
               />
             </figure>
 
