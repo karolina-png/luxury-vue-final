@@ -32,7 +32,6 @@
         >
           <div class="face front">
             <figure>
-<<<<<<< HEAD
               <img
                 v-if="p.image != null"
                 :src="axios.defaults.baseURL + p.image"
@@ -41,12 +40,6 @@
                 <img v-if="p.image == null" src="public/uploads/default.jpg" alt="">
               />
             </figure>
-=======
-                <img v-if="p.image != null" :src="axios.defaults.baseURL + p.image" alt="" />
-                <img v-if="p.image == null" src="public/uploads/default.jpg" alt="" />
-              
-              </figure>
->>>>>>> ab2e767242c1f6e11638332cf2bed44ccfbd5bf0
 
             <p>Nombre: {{ p.name }}</p>
             <p>Precio: {{ p.selling_price }}</p>
